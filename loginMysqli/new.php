@@ -37,9 +37,13 @@
 					$_SESSION['user_id']=$row['user_id'];
 					header('location:home.php');
 					
-					$arr = array($query);
-					
-					echo json_encode($arr);
+					$json_array = array();
+					while($row = mysqli_fetch_assoc($query)){
+						$json_array[] = $row;
+					}
+					echo"<pre>";
+					print_r($json_array);
+					echo "</pre>";
 				}
 			else
 				{
